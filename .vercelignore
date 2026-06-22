@@ -1,7 +1,0 @@
-data/
-scripts/
-notebooks/
-__pycache__/
-.ipynb_checkpoints/
-*.py
-.github/
