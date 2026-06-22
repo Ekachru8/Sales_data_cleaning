@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retail Sales EDA — Data Analysis Portfolio</title>
+    <meta name="description" content="Exploratory Data Analysis of 1M+ retail transactions. Deep data cleaning, 10 professional visualizations, and actionable business insights using Python, Pandas, Matplotlib & Seaborn.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- ═══════════════ NAVIGATION ═══════════════ -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-icon">📊</span>
+                <span class="logo-text">Sales<span class="logo-accent">EDA</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#overview" class="nav-link">Overview</a></li>
+                <li><a href="#pipeline" class="nav-link">Pipeline</a></li>
+                <li><a href="#visualizations" class="nav-link">Visualizations</a></li>
+                <li><a href="#insights" class="nav-link">Insights</a></li>
+                <li><a href="#tech-stack" class="nav-link">Tech Stack</a></li>
+            </ul>
+            <a href="https://github.com" target="_blank" class="nav-cta" id="github-link">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                View on GitHub
+            </a>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- ═══════════════ HERO ═══════════════ -->
+    <section class="hero" id="hero">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-glow hero-glow-1"></div>
+        <div class="hero-glow hero-glow-2"></div>
+        <div class="hero-container">
+            <div class="hero-badge">
+                <span class="badge-dot"></span>
+                Portfolio Project — Data Analysis
+            </div>
+            <h1 class="hero-title">
+                Online Retail Sales
+                <span class="hero-title-gradient">Exploratory Data Analysis</span>
+            </h1>
+            <p class="hero-subtitle">
+                Deep cleaning, visualization & business insight extraction from
+                <strong>1,000,000+</strong> retail transactions across <strong>2 years</strong> of UK e-commerce data.
+            </p>
+            <div class="hero-stats">
+                <div class="stat-card">
+                    <span class="stat-number" data-count="1067371">0</span>
+                    <span class="stat-label">Transactions</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-count="10">0</span>
+                    <span class="stat-label">Visualizations</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-count="5">0</span>
+                    <span class="stat-label">Business Insights</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number" data-count="38">0</span>
+                    <span class="stat-label">Countries</span>
+                </div>
+            </div>
+            <div class="hero-actions">
+                <a href="#visualizations" class="btn btn-primary">
+                    <span>Explore Charts</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                </a>
+                <a href="#pipeline" class="btn btn-secondary">
+                    <span>View Pipeline</span>
+                </a>
+            </div>
+        </div>
+        <div class="hero-scroll-indicator">
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ OVERVIEW ═══════════════ -->
+    <section class="section" id="overview">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">About the Project</span>
+                <h2 class="section-title">Project Overview</h2>
+                <p class="section-desc">
+                    A comprehensive exploratory data analysis of the <strong>Online Retail II</strong> dataset
+                    from the UCI Machine Learning Repository — one of the most widely used transactional datasets
+                    in the data science community.
+                </p>
+            </div>
+            <div class="overview-grid">
+                <div class="overview-card" id="overview-dataset">
+                    <div class="overview-icon">🗄️</div>
+                    <h3>Dataset</h3>
+                    <p>Online Retail II from UCI ML Repository. ~1.07M transactional records from a UK-based online gift retailer (Dec 2009 — Dec 2011).</p>
+                    <ul class="overview-details">
+                        <li><span>Records</span><strong>1,067,371</strong></li>
+                        <li><span>Features</span><strong>8 columns</strong></li>
+                        <li><span>Period</span><strong>2 years</strong></li>
+                        <li><span>Countries</span><strong>38+</strong></li>
+                    </ul>
+                </div>
+                <div class="overview-card" id="overview-objectives">
+                    <div class="overview-icon">🎯</div>
+                    <h3>Objectives</h3>
+                    <ul class="objective-list">
+                        <li>
+                            <div class="obj-num">01</div>
+                            <div>
+                                <strong>Deep Data Cleaning</strong>
+                                <p>Handle missing values, duplicates, outliers (IQR), type casting & datetime parsing</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="obj-num">02</div>
+                            <div>
+                                <strong>Feature Engineering</strong>
+                                <p>Create revenue, time-based features, and aggregation columns</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="obj-num">03</div>
+                            <div>
+                                <strong>10 Visualizations</strong>
+                                <p>Publication-ready charts covering trends, distributions, correlations & geography</p>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="obj-num">04</div>
+                            <div>
+                                <strong>Business Insights</strong>
+                                <p>5 actionable, data-backed conclusions with strategic recommendations</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ DATA PIPELINE ═══════════════ -->
+    <section class="section section-dark" id="pipeline">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Methodology</span>
+                <h2 class="section-title">Data Cleaning Pipeline</h2>
+                <p class="section-desc">A rigorous, multi-step pipeline transforming raw messy data into analysis-ready format.</p>
+            </div>
+            <div class="pipeline-flow">
+                <div class="pipeline-step" id="step-missing">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Missing Values</h3>
+                        <p>Identified & quantified nulls. Dropped rows missing Customer ID (~25%) and Description for data integrity.</p>
+                        <div class="step-badge">~270K rows removed</div>
+                    </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step" id="step-duplicates">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Duplicates</h3>
+                        <p>Detected and removed exact duplicate transaction records across all columns.</p>
+                        <div class="step-badge">~27K duplicates</div>
+                    </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step" id="step-invalid">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Invalid Records</h3>
+                        <p>Removed cancelled orders (Invoice prefix 'C'), negative quantities, and zero/negative prices.</p>
+                        <div class="step-badge">Cancelled + invalid</div>
+                    </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step" id="step-types">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Type Casting</h3>
+                        <p>Enforced proper dtypes — datetime for dates, int for quantities, float for prices, string for IDs.</p>
+                        <div class="step-badge">6 columns cast</div>
+                    </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step" id="step-datetime">
+                    <div class="step-number">05</div>
+                    <div class="step-content">
+                        <h3>Datetime Parsing</h3>
+                        <p>Extracted Year, Month, DayOfWeek, Hour, Quarter, and InvoiceMonth for time-series analysis.</p>
+                        <div class="step-badge">7 new features</div>
+                    </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step" id="step-outliers">
+                    <div class="step-number">06</div>
+                    <div class="step-content">
+                        <h3>Outlier Removal (IQR)</h3>
+                        <p>Applied IQR method (1.5× multiplier) on Quantity, Price, and Revenue to remove extreme outliers.</p>
+                        <div class="step-badge">Statistical method</div>
+                    </div>
+                </div>
+                <div class="pipeline-connector"></div>
+                <div class="pipeline-step step-final" id="step-feature">
+                    <div class="step-number">07</div>
+                    <div class="step-content">
+                        <h3>Feature Engineering</h3>
+                        <p>Created Revenue column (Quantity × Price) and YearQuarter for quarterly analysis.</p>
+                        <div class="step-badge step-badge-success">Clean Dataset ✓</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ VISUALIZATIONS ═══════════════ -->
+    <section class="section" id="visualizations">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Exploratory Analysis</span>
+                <h2 class="section-title">Visualizations</h2>
+                <p class="section-desc">10 publication-ready charts exploring revenue trends, customer behavior, product performance, and geographic distribution.</p>
+            </div>
+
+            <!-- Filter tabs -->
+            <div class="viz-filters" id="viz-filters">
+                <button class="viz-filter active" data-filter="all">All Charts</button>
+                <button class="viz-filter" data-filter="trends">Trends</button>
+                <button class="viz-filter" data-filter="distribution">Distributions</button>
+                <button class="viz-filter" data-filter="comparison">Comparisons</button>
+                <button class="viz-filter" data-filter="correlation">Correlations</button>
+            </div>
+
+            <div class="viz-grid" id="viz-grid">
+                <!-- Viz 1 -->
+                <div class="viz-card" data-category="trends" id="viz-1">
+                    <div class="viz-img-wrapper">
+                        <img src="../outputs/01_monthly_revenue_trend.png" alt="Monthly Revenue Trend Line Chart" class="viz-img" loading="lazy">
+                        <div class="viz-overlay">
+                            <span class="viz-chart-type">Line Chart</span>
+                        </div>
+                    </div>
+                    <div class="viz-info">
+                        <span class="viz-number">#01</span>
+                        <h3>Monthly Revenue Trend</h3>
+                        <p>Revenue trajectory over 2 years with peak month annotation. Shows clear Q4 seasonality driven by pre-Christmas demand.</p>
+                        <div class="viz-tags">
+                            <span class="viz-tag">Time Series</span>
+                            <span class="viz-tag">Matplotlib</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viz 2 -->
+                <div class="viz-card" data-category="comparison" id="viz-2">
+                    <div class="viz-img-wrapper">
+                        <img src="../outputs/02_top10_products_revenue.png" alt="Top 10 Products by Revenue" class="viz-img" loading="lazy">
+                        <div class="viz-overlay">
+                            <span class="viz-chart-type">Horizontal Bar</span>
+                        </div>
+                    </div>
+                    <div class="viz-info">
+                        <span class="viz-number">#02</span>
+                        <h3>Top 10 Products by Revenue</h3>
+                        <p>Best-selling products ranked by total revenue with value labels. Reveals product concentration in the portfolio.</p>
+                        <div class="viz-tags">
+                            <span class="viz-tag">Ranking</span>
+                            <span class="viz-tag">Matplotlib</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viz 3 -->
+                <div class="viz-card viz-card-wide" data-category="correlation" id="viz-3">
+                    <div class="viz-img-wrapper">
+                        <img src="../outputs/03_country_month_heatmap.png" alt="Sales by Country Heatmap" class="viz-img" loading="lazy">
+                        <div class="viz-overlay">
+                            <span class="viz-chart-type">Heatmap</span>
+                        </div>
+                    </div>
+                    <div class="viz-info">
+                        <span class="viz-number">#03</span>
+                        <h3>Sales by Country × Month Heatmap</h3>
+                        <p>Revenue distribution across top 10 countries by month. Highlights geographic and seasonal patterns simultaneously.</p>
+                        <div class="viz-tags">
+                            <span class="viz-tag">Geographic</span>
+                            <span class="viz-tag">Seaborn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viz 4 -->
+                <div class="viz-card" data-category="distribution" id="viz-4">
+                    <div class="viz-img-wrapper">
+                        <img src="../outputs/04_quantity_distribution.png" alt="Order Quantity Distribution" class="viz-img" loading="lazy">
+                        <div class="viz-overlay">
+                            <span class="viz-chart-type">Histogram + KDE</span>
+                        </div>
+                    </div>
+                    <div class="viz-info">
+                        <span class="viz-number">#04</span>
+                        <h3>Order Quantity Distribution</h3>
+                        <p>Frequency distribution with kernel density estimate overlay. Shows right-skewed pattern with median and mean annotations.</p>
+                        <div class="viz-tags">
+                            <span class="viz-tag">Statistical</span>
+                            <span class="viz-tag">Seaborn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viz 5 -->
+                <div class="viz-card" data-category="correlation" id="viz-5">
+                    <div class="viz-img-wrapper">
+                        <img src="../outputs/05_correlation_matrix.png" alt="Correlation Matrix" class="viz-img" loading="lazy">
+                        <div class="viz-overlay">
+                            <span class="viz-chart-type">Triangular Heatmap</span>
+                        </div>
+                    </div>
+                    <div class="viz-info">
+                        <span class="viz-number">#05</span>
+                        <h3>Correlation Matrix</h3>
+                        <p>Lower-triangle correlation heatmap of all numeric features. Revenue strongly correlates with Quantity as expected.</p>
+                        <div class="viz-tags">
+                            <span class="viz-tag">Statistical</span>
+                            <span class="viz-tag">Seaborn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viz 6 -->
+                <div class="viz-card" data-category="comparison" id="viz-6">
+                    <div class="viz-img-wrapper">
+                        <img src="../outputs/06_revenue_by_day.png" alt="Revenue by Day of Week" class="viz-img" loading="lazy">
+                        <div class="viz-overlay">
+                            <span class="viz-chart-type">Bar Chart</span>
+                        </div>
+                    </div>
+                    <div class="viz-info">
+                        <span class="viz-number">#06</span>
+                        <h3>Revenue by Day of Week</h3>
+                        <p>Total revenue breakdown by weekday with peak day highlighted. Reveals the optimal days for promotional campaigns.</p>
+                        <div class="viz-tags">
+                            <span class="viz-tag">Temporal</span>
+                            <span class="viz-tag">Matplotlib</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viz 7 -->
+                <div class="viz-card" data-category="comparison" id="viz-7">
+                    <div class="viz-img-wrapper">
+                        <img src="../outputs/07_top10_customers.png" alt="Top 10 Customers by Revenue" class="viz-img" loading="lazy">
+                        <div class="viz-overlay">
+                            <span class="viz-chart-type">Horizontal Bar</span>
+                        </div>
+                    </div>
+                    <div class="viz-info">
+                        <span class="viz-number">#07</span>
+                        <h3>Top 10 Customers by Revenue</h3>
+                        <p>Highest-value customers with Pareto annotation showing concentration. Critical for retention strategy planning.</p>
+                        <div class="viz-tags">
+                            <span class="viz-tag">Customer</span>
+                            <span class="viz-tag">Matplotlib</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viz 8 -->
+                <div class="viz-card viz-card-wide" data-category="trends" id="viz-8">
+                    <div class="viz-img-wrapper">
+                        <img src="../outputs/08_hourly_orders.png" alt="Hourly Order Volume" class="viz-img" loading="lazy">
+                        <div class="viz-overlay">
+                            <span class="viz-chart-type">Dual-Axis Chart</span>
+                        </div>
+                    </div>
+                    <div class="viz-info">
+                        <span class="viz-number">#08</span>
+                        <h3>Hourly Order Volume & Revenue</h3>
+                        <p>Dual-axis visualization combining order count (bars) and revenue (line) by hour. Shows peak trading windows for operational planning.</p>
+                        <div class="viz-tags">
+                            <span class="viz-tag">Temporal</span>
+                            <span class="viz-tag">Dual Axis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viz 9 -->
+                <div class="viz-card" data-category="distribution" id="viz-9">
+                    <div class="viz-img-wrapper">
+                        <img src="../outputs/09_revenue_boxplot_quarter.png" alt="Revenue Box Plot by Quarter" class="viz-img" loading="lazy">
+                        <div class="viz-overlay">
+                            <span class="viz-chart-type">Box Plot</span>
+                        </div>
+                    </div>
+                    <div class="viz-info">
+                        <span class="viz-number">#09</span>
+                        <h3>Revenue Distribution by Quarter</h3>
+                        <p>Box plots showing revenue spread across quarters. Highlights median shifts and outlier patterns seasonally.</p>
+                        <div class="viz-tags">
+                            <span class="viz-tag">Statistical</span>
+                            <span class="viz-tag">Seaborn</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Viz 10 -->
+                <div class="viz-card" data-category="trends" id="viz-10">
+                    <div class="viz-img-wrapper">
+                        <img src="../outputs/10_monthly_customers.png" alt="Monthly Customer Count" class="viz-img" loading="lazy">
+                        <div class="viz-overlay">
+                            <span class="viz-chart-type">Area Line Chart</span>
+                        </div>
+                    </div>
+                    <div class="viz-info">
+                        <span class="viz-number">#10</span>
+                        <h3>Monthly Unique Customer Count</h3>
+                        <p>Customer base growth trajectory with peak and trough annotations. Tracks customer engagement over time.</p>
+                        <div class="viz-tags">
+                            <span class="viz-tag">Growth</span>
+                            <span class="viz-tag">Matplotlib</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ INSIGHTS ═══════════════ -->
+    <section class="section section-dark" id="insights">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Key Findings</span>
+                <h2 class="section-title">Business Insights</h2>
+                <p class="section-desc">5 actionable, data-backed conclusions with strategic recommendations for business growth.</p>
+            </div>
+            <div class="insights-grid">
+                <div class="insight-card" id="insight-1">
+                    <div class="insight-header">
+                        <div class="insight-icon">📅</div>
+                        <span class="insight-num">Insight #1</span>
+                    </div>
+                    <h3>Q4 Drives Disproportionate Revenue</h3>
+                    <p>Q4 accounts for a massive share of annual revenue, with November being the peak month driven by pre-Christmas gifting demand. This seasonal pattern is consistent across both years in the dataset.</p>
+                    <div class="insight-recommendation">
+                        <strong>→ Recommendation:</strong> Increase inventory and marketing spend by 40–50% in September to prepare for Q4 demand surge. Seasonal promotions are critical.
+                    </div>
+                </div>
+
+                <div class="insight-card" id="insight-2">
+                    <div class="insight-header">
+                        <div class="insight-icon">👥</div>
+                        <span class="insight-num">Insight #2</span>
+                    </div>
+                    <h3>Severe Customer Concentration Risk</h3>
+                    <p>The top 20% of customers generate the vast majority of total revenue, following a classic Pareto distribution. Losing even a few top customers could significantly impact the bottom line.</p>
+                    <div class="insight-recommendation">
+                        <strong>→ Recommendation:</strong> Implement a loyalty/retention program for top-tier customers while diversifying the revenue base through acquisition campaigns.
+                    </div>
+                </div>
+
+                <div class="insight-card" id="insight-3">
+                    <div class="insight-header">
+                        <div class="insight-icon">🌍</div>
+                        <span class="insight-num">Insight #3</span>
+                    </div>
+                    <h3>Heavy Geographic Dependency</h3>
+                    <p>The United Kingdom dominates the revenue share at ~82%, creating significant single-market risk. The next largest markets (Netherlands, EIRE, Germany) contribute comparatively small shares.</p>
+                    <div class="insight-recommendation">
+                        <strong>→ Recommendation:</strong> Accelerate international expansion in top-performing EU markets (DACH region, Netherlands, France) to reduce single-market risk.
+                    </div>
+                </div>
+
+                <div class="insight-card" id="insight-4">
+                    <div class="insight-header">
+                        <div class="insight-icon">⏰</div>
+                        <span class="insight-num">Insight #4</span>
+                    </div>
+                    <h3>Clear Peak Trading Windows</h3>
+                    <p>Analysis reveals distinct daily and hourly patterns — certain weekdays drive significantly more revenue, and orders peak during late morning to early afternoon hours.</p>
+                    <div class="insight-recommendation">
+                        <strong>→ Recommendation:</strong> Schedule promotions, email campaigns, and flash sales during peak windows. Ensure customer support staffing aligns with high-traffic hours.
+                    </div>
+                </div>
+
+                <div class="insight-card" id="insight-5">
+                    <div class="insight-header">
+                        <div class="insight-icon">📦</div>
+                        <span class="insight-num">Insight #5</span>
+                    </div>
+                    <h3>Long-Tail Product Portfolio</h3>
+                    <p>A small number of bestselling products contribute outsized revenue out of thousands of total SKUs. The long tail of low-performing products adds complexity without proportional revenue.</p>
+                    <div class="insight-recommendation">
+                        <strong>→ Recommendation:</strong> Focus marketing on proven bestsellers. Evaluate low-performing SKUs for discontinuation to reduce warehousing costs and inventory complexity.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ TECH STACK ═══════════════ -->
+    <section class="section" id="tech-stack">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Built With</span>
+                <h2 class="section-title">Tech Stack</h2>
+                <p class="section-desc">The tools, libraries, and technologies used to build this analysis.</p>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-card" id="tech-python">
+                    <div class="tech-icon-wrap">
+                        <svg viewBox="0 0 128 128" class="tech-svg"><path fill="#FFD43B" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z"/><path fill="#4584B6" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z"/></svg>
+                    </div>
+                    <h3>Python 3.14</h3>
+                    <p>Core programming language for data manipulation, analysis, and visualization</p>
+                    <span class="tech-role">Language</span>
+                </div>
+
+                <div class="tech-card" id="tech-pandas">
+                    <div class="tech-icon-wrap">
+                        <svg viewBox="0 0 128 128" class="tech-svg"><g fill="#130754"><rect x="18" y="4" width="16" height="36" rx="3"/><rect x="18" y="49" width="16" height="36" rx="3"/><rect x="18" y="94" width="16" height="30" rx="3"/><rect x="56" y="4" width="16" height="30" rx="3"/><rect x="56" y="43" width="16" height="36" rx="3"/><rect x="56" y="88" width="16" height="36" rx="3"/><rect x="94" y="4" width="16" height="36" rx="3"/><rect x="94" y="49" width="16" height="36" rx="3"/><rect x="94" y="94" width="16" height="30" rx="3"/></g></svg>
+                    </div>
+                    <h3>Pandas</h3>
+                    <p>Data manipulation, cleaning, aggregation, and time-series grouping</p>
+                    <span class="tech-role">Data Wrangling</span>
+                </div>
+
+                <div class="tech-card" id="tech-matplotlib">
+                    <div class="tech-icon-wrap tech-icon-mpl">
+                        <span class="tech-emoji">📉</span>
+                    </div>
+                    <h3>Matplotlib</h3>
+                    <p>Base plotting library for line charts, bar charts, and custom annotations</p>
+                    <span class="tech-role">Visualization</span>
+                </div>
+
+                <div class="tech-card" id="tech-seaborn">
+                    <div class="tech-icon-wrap tech-icon-sns">
+                        <span class="tech-emoji">📊</span>
+                    </div>
+                    <h3>Seaborn</h3>
+                    <p>Statistical visualization — heatmaps, distribution plots, box plots, and KDE</p>
+                    <span class="tech-role">Visualization</span>
+                </div>
+
+                <div class="tech-card" id="tech-scipy">
+                    <div class="tech-icon-wrap tech-icon-scipy">
+                        <span class="tech-emoji">🔬</span>
+                    </div>
+                    <h3>SciPy</h3>
+                    <p>Statistical computations including IQR-based outlier detection and analysis</p>
+                    <span class="tech-role">Statistics</span>
+                </div>
+
+                <div class="tech-card" id="tech-jupyter">
+                    <div class="tech-icon-wrap tech-icon-jupyter">
+                        <svg viewBox="0 0 128 128" class="tech-svg"><circle cx="64" cy="64" r="56" fill="none" stroke="#F37626" stroke-width="6"/><circle cx="64" cy="30" r="8" fill="#F37626"/><circle cx="36" cy="92" r="7" fill="#F37626"/><circle cx="92" cy="92" r="7" fill="#F37626"/></svg>
+                    </div>
+                    <h3>Jupyter Notebook</h3>
+                    <p>Interactive computing environment for iterative analysis and documentation</p>
+                    <span class="tech-role">Environment</span>
+                </div>
+
+                <div class="tech-card" id="tech-openpyxl">
+                    <div class="tech-icon-wrap tech-icon-xlsx">
+                        <span class="tech-emoji">📗</span>
+                    </div>
+                    <h3>OpenPyXL</h3>
+                    <p>Excel file parsing engine for reading the raw .xlsx dataset with multiple sheets</p>
+                    <span class="tech-role">Data I/O</span>
+                </div>
+
+                <div class="tech-card" id="tech-numpy">
+                    <div class="tech-icon-wrap tech-icon-np">
+                        <span class="tech-emoji">🔢</span>
+                    </div>
+                    <h3>NumPy</h3>
+                    <p>Numerical computing backbone for array operations and mathematical functions</p>
+                    <span class="tech-role">Computation</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════ FOOTER ═══════════════ -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">📊</span>
+                    <span class="logo-text">Sales<span class="logo-accent">EDA</span></span>
+                    <p>A portfolio project demonstrating data cleaning and exploratory data analysis skills.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="#overview">Overview</a>
+                    <a href="#pipeline">Pipeline</a>
+                    <a href="#visualizations">Visualizations</a>
+                    <a href="#insights">Insights</a>
+                    <a href="#tech-stack">Tech Stack</a>
+                </div>
+                <div class="footer-source">
+                    <h4>Data Source</h4>
+                    <p>Online Retail II — UCI Machine Learning Repository</p>
+                    <a href="https://archive.ics.uci.edu/dataset/502/online+retail+ii" target="_blank" class="footer-ext-link">Visit UCI Repository →</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 · Built with Python, Pandas & Passion</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ═══════════════ LIGHTBOX ═══════════════ -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close lightbox">&times;</button>
+        <img src="" alt="" class="lightbox-img" id="lightbox-img">
+        <p class="lightbox-caption" id="lightbox-caption"></p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
