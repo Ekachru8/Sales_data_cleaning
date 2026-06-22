@@ -4,6 +4,11 @@
 [![Pandas](https://img.shields.io/badge/Pandas-2.0%2B-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-F37626?logo=jupyter&logoColor=white)](https://jupyter.org)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Website](https://img.shields.io/badge/🌐_Live_Website-Portfolio-2e86ab?style=for-the-badge)](https://ekachru8.github.io/Sales_data_cleaning/website/index.html)
+
+> **🔗 Live Portfolio Website:** [https://ekachru8.github.io/Sales_data_cleaning/website/index.html](https://ekachru8.github.io/Sales_data_cleaning/website/index.html)
+>
+> **📂 GitHub Repository:** [https://github.com/Ekachru8/Sales_data_cleaning](https://github.com/Ekachru8/Sales_data_cleaning)
 
 A comprehensive exploratory data analysis of **1M+ retail transactions** from a UK-based online gift store. This project demonstrates professional data cleaning, feature engineering, 10 publication-ready visualizations, and actionable business insights.
 
@@ -72,7 +77,7 @@ The notebook includes 10 professional charts:
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/Sales_data_cleaning.git
+git clone https://github.com/Ekachru8/Sales_data_cleaning.git
 cd Sales_data_cleaning
 
 # Install dependencies
@@ -108,6 +113,10 @@ Sales_data_cleaning/
 ├── outputs/                       # Exported chart PNGs
 ├── scripts/
 │   └── generate_notebook.py       # Notebook generator script
+├── website/                       # Portfolio website (GitHub Pages)
+│   ├── index.html
+│   ├── styles.css
+│   └── script.js
 ├── .gitignore
 ├── README.md
 └── requirements.txt
